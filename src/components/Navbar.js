@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaAlignRight } from 'react-icons/fa';
 import { SiHotelsDotCom } from 'react-icons/si';
@@ -28,7 +28,6 @@ export default function Navbar() {
                     <li>
                         <Link to="/rooms">Rooms</Link>
                     </li>
-                    
                 </ul>
             </div>
         </nav>

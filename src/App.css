@@ -177,6 +177,33 @@ h6 {
   background-image: url("./images/room-9.jpeg");
   min-height: 60vh;
 }
+.centerFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.iconSlideDown {
+  color: var(--mainBlack);
+  width: 20px;
+  height: 20px;
+  margin-top: 50px;
+	transform: scale(1);
+	animation: pulse 2s infinite;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+	}
+
+	70% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0.95);
+	}
+}
 /* End of Hero */
 /* Banner */
 .banner {
@@ -261,6 +288,7 @@ h6 {
 }
 .services h6 {
   letter-spacing: var(--mainSpacing);
+  text-transform: capitalize;
 }
 .services p {
   width: 80%;
