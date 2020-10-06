@@ -7,10 +7,12 @@ import Rooms from './pages/Rooms';
 import SingleRoom from './pages/SingleRoom';
 import Error from './pages/Error';
 import Navbar from './components/Navbar';
+import { RoomProvider } from './Context';
 
 function App() {
   return (
     <>
+    <RoomProvider>
     <Router>
       <Navbar />
       <Switch>
@@ -20,6 +22,7 @@ function App() {
         <Route component={Error}/>
       </Switch>
     </Router>
+    </RoomProvider>
     </>
   );
 }
