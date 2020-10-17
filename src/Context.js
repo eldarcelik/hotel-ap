@@ -9,6 +9,15 @@ function RoomProvider(props) {
         sortedRooms: [],
         featuredRooms: [],
         loading: true,
+        type: "all",
+        capacity: 1,
+        price: 0,
+        minPrice: 0,
+        maxPrice: 0,
+        minSize: 0,
+        maxSize: 0,
+        breakfast: false,
+        pets: false,
     });
     //getData
 
@@ -17,7 +26,17 @@ function RoomProvider(props) {
 
         let rooms = formatData(items);
         let featuredRooms = rooms.filter(room => room.featured === true);
-        setData({rooms, featuredRooms, sortedRooms: rooms, loading: false});
+        let maxPrice = Math.max(...rooms.map(room => room.price));
+        let maxSize = Math.max(...rooms.map(room => room.size));
+        setData({
+            rooms, 
+            featuredRooms, 
+            sortedRooms: rooms, 
+            loading: false,
+            price: maxPrice,
+            maxPrice,
+            maxSize,
+        });
     }, []); 
 
     // get specific room
@@ -39,8 +58,18 @@ function RoomProvider(props) {
         return tempItems;
     }
 
+    const handleChange = (event) => {
+        const type = event.target.type;
+        const name = event.target.name;
+        const value = event.target.value;
+    }
+
+    const filterRooms = () => {
+        console.log("Test")
+    }
+
     return (
-        <RoomContext.Provider value={{data, setData, getRoom}}>
+        <RoomContext.Provider value={{data, setData, getRoom, handleChange}}>
             {props.children}
         </RoomContext.Provider>
     )

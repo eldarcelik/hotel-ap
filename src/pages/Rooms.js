@@ -6,6 +6,8 @@ import Hero from '../components/Hero';
 import Loading from '../components/Loading';
 import Room from '../components/Room';
 
+import RoomsContainer from '../components/RoomsContainer';
+
 export default function Rooms() {
     let { data, setData } = useContext(RoomContext);;
     let { loading, sortedRooms } = data;
@@ -17,16 +19,7 @@ export default function Rooms() {
                 <Link to="/" className="btn-primary">Return Home</Link>
             </Banner>
         </Hero>
-        <section className="roomslist">
-            <div className="roomslist-center">
-                {loading 
-                    ? <Loading />
-                    : sortedRooms.map(room => {
-                        return <Room key={room.id} room={room} />
-                    }) 
-                }
-            </div>
-        </section>
+        <RoomsContainer />
         </>
     )
 }
