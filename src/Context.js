@@ -17,9 +17,17 @@ function RoomProvider(props) {
 
         let rooms = formatData(items);
         let featuredRooms = rooms.filter(room => room.featured === true);
-        setData({rooms, featuredRooms, sortedRooms: rooms, loading: false})
+        setData({rooms, featuredRooms, sortedRooms: rooms, loading: false});
     }, []); 
 
+    // get specific room
+    const getRoom = (slug) => {
+        let tempRooms = [...data.rooms];
+        const room = tempRooms.find((room) => room.slug === slug);
+        return room;
+    }
+
+    // format and save all information about one room in one object
     const formatData = (items) => {
         let tempItems = items.map(item => {
             let id = item.sys.id;
@@ -32,7 +40,7 @@ function RoomProvider(props) {
     }
 
     return (
-        <RoomContext.Provider value={[data, setData]}>
+        <RoomContext.Provider value={{data, setData, getRoom}}>
             {props.children}
         </RoomContext.Provider>
     )
