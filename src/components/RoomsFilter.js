@@ -17,7 +17,7 @@ export default function RoomsFilter() {
         // every time when filters change call this function to change parametars in context and filter rooms
         filterRooms()
 
-    }, [type, capacity, price])
+    }, [type, capacity, price, minSize, maxSize])
     
     useEffect(() => {
         // set filters to default every time it mounts
@@ -29,8 +29,8 @@ export default function RoomsFilter() {
                 price,
                 minPrice,
                 maxPrice,
-                minSize: 0,
-                maxSize: 0,
+                minSize,
+                maxSize,
                 breakfast: false,
                 pets: false,
             }))
@@ -70,7 +70,7 @@ export default function RoomsFilter() {
                         {types}
                     </select>
                 </div>
-                {/* end select type */}
+                {/* end of select type */}
 
                 {/* guests */}
                 <div className="form-group">
@@ -85,7 +85,7 @@ export default function RoomsFilter() {
                         {people}
                     </select>
                 </div>
-                {/* end guests */}
+                {/* end of guests */}
 
                 {/* room price */}
                 <div className="form-group">
@@ -101,7 +101,31 @@ export default function RoomsFilter() {
                         onChange={handleChange}
                     />
                 </div>
-                {/* end room price */}
+                {/* end of room price */}
+
+                {/* size */}
+                <div className="form-group">
+                    <label htmlFor="size">room size</label>
+                    <div className="size-inputs">
+                        <input 
+                            name="minSize" 
+                            id="size" 
+                            type="number" 
+                            className="size-input" 
+                            value={minSize} 
+                            onChange={handleChange} 
+                        />
+                        <input 
+                            name="maxSize" 
+                            id="size" 
+                            type="number" 
+                            className="size-input" 
+                            value={maxSize} 
+                            onChange={handleChange} 
+                        />
+                    </div>
+                </div>
+                {/* end of size */}
             </form>
         </section>
     )
