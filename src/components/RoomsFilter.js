@@ -17,7 +17,7 @@ export default function RoomsFilter() {
         // every time when filters change call this function to change parametars in context and filter rooms
         filterRooms()
 
-    }, [type, capacity, price, minSize, maxSize])
+    }, [type, capacity, price, minSize, maxSize, breakfast, pets])
     
     useEffect(() => {
         // set filters to default every time it mounts
@@ -31,8 +31,8 @@ export default function RoomsFilter() {
                 maxPrice,
                 minSize,
                 maxSize,
-                breakfast: false,
-                pets: false,
+                breakfast,
+                pets,
             }))
         } 
     }, [])
@@ -126,6 +126,31 @@ export default function RoomsFilter() {
                     </div>
                 </div>
                 {/* end of size */}
+
+                {/* extras */}
+                <div className="form-group">
+                    <div className="single-extra">
+                        <input 
+                            name="breakfast"
+                            id="breakfast"
+                            type="checkbox"
+                            value={breakfast}
+                            onChange={handleChange}
+                        />
+                        <label htmlFor="breakfast">breakfast</label>
+                    </div>
+                    <div className="single-extra">
+                        <input 
+                            name="pets"
+                            id="pets"
+                            type="checkbox"
+                            value={pets}
+                            onChange={handleChange}
+                        />
+                        <label htmlFor="pets">pets</label>
+                    </div>
+                </div>
+                {/* end of extras */}
             </form>
         </section>
     )
