@@ -14,10 +14,10 @@ export default function RoomsFilter(props) {
     const { rooms, type, capacity, price, minPrice, maxPrice, minSize, maxSize, breakfast, pets } = data;
 
     useEffect(() => {
-        // every time when filters change call this function to change parametars in state
+        // every time when filters change call this function to change parametars in state and filter rooms
         filterRooms()
 
-    }, [type])
+    }, [type, capacity])
     
     useEffect(() => {
         // set filters to default every time it mounts
@@ -46,6 +46,13 @@ export default function RoomsFilter(props) {
         return <option key={index} value={item}>{item}</option>
     })
 
+    // get unique capacity
+    let people = getUnique(rooms, "capacity");
+    // map to jsx
+    people = people.map((item, index) => {
+        return <option key={index} value={item}>{item}</option>
+    })
+
     return (
         <section className="filter-container">
             <Title title="search rooms" />
@@ -64,6 +71,21 @@ export default function RoomsFilter(props) {
                     </select>
                 </div>
                 {/* end select type */}
+
+                {/* guests */}
+                <div className="form-group">
+                    <label htmlFor="capacity">guests</label>
+                    <select 
+                        name="capacity" 
+                        id="capacity"
+                        className="form-control"
+                        value={capacity}  
+                        onChange={handleChange}
+                    >
+                        {people}
+                    </select>
+                </div>
+                {/* end guests */}
             </form>
         </section>
     )
