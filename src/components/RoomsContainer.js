@@ -6,15 +6,15 @@ import Loading from './Loading';
 
 export default function RoomsContainer() {
     let { data, setData } = useContext(RoomContext);;
-    let { loading, sortedRooms, rooms } = data;
+    let { loading } = data;
     
     if (loading) {
         return <Loading />;
     }
     return (
         <>
-            <RoomsFilter rooms={rooms} />
-            <RoomsList rooms={sortedRooms} />
+            <RoomsFilter />
+            <RoomsList />
         </>
     )
 }

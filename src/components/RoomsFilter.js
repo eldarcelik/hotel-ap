@@ -9,15 +9,15 @@ const getUnique = (items, value) => {
     return [...new Set(tempArray)]
 }
 
-export default function RoomsFilter(props) {
+export default function RoomsFilter() {
     const { data, setData, handleChange, filterRooms } = useContext(RoomContext);
     const { rooms, type, capacity, price, minPrice, maxPrice, minSize, maxSize, breakfast, pets } = data;
 
     useEffect(() => {
-        // every time when filters change call this function to change parametars in state and filter rooms
+        // every time when filters change call this function to change parametars in context and filter rooms
         filterRooms()
 
-    }, [type, capacity])
+    }, [type, capacity, price])
     
     useEffect(() => {
         // set filters to default every time it mounts
@@ -26,9 +26,9 @@ export default function RoomsFilter(props) {
                 ...prevData,
                 type: "all",
                 capacity: 1,
-                price: 0,
-                minPrice: 0,
-                maxPrice: 0,
+                price,
+                minPrice,
+                maxPrice,
                 minSize: 0,
                 maxSize: 0,
                 breakfast: false,
@@ -86,6 +86,22 @@ export default function RoomsFilter(props) {
                     </select>
                 </div>
                 {/* end guests */}
+
+                {/* room price */}
+                <div className="form-group">
+                    <label htmlFor="price">room price ${price}</label>
+                    <input 
+                        name="price" 
+                        id="price"
+                        type="range"
+                        className="form-control"
+                        min={minPrice}
+                        max={maxPrice}
+                        value={price}
+                        onChange={handleChange}
+                    />
+                </div>
+                {/* end room price */}
             </form>
         </section>
     )

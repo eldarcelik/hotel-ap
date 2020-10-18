@@ -26,8 +26,11 @@ function RoomProvider(props) {
 
         let rooms = formatData(items);
         let featuredRooms = rooms.filter(room => room.featured === true);
+
+        // get max price and size from all rooms
         let maxPrice = Math.max(...rooms.map(room => room.price));
         let maxSize = Math.max(...rooms.map(room => room.size));
+
         setData(prevData => ({ 
             ...prevData,
             rooms, 
@@ -64,6 +67,7 @@ function RoomProvider(props) {
         const target = event.target;
         const value = event.type === "checkbox" ? target.checked : target.value;
         const name = event.target.name;
+
         setData(prevData => ({
             ...prevData,
             [name]: value
@@ -76,6 +80,7 @@ function RoomProvider(props) {
         let tempRooms = [...rooms];
         // transform value
         capacity = parseInt(capacity);
+        price = parseInt(price);
 
         // filter by type 
         if (type !== "all") {
@@ -85,7 +90,11 @@ function RoomProvider(props) {
         if (capacity !== 1) {
             tempRooms = tempRooms.filter(room => room.capacity >= capacity)
         }
-        
+
+        // filter by price 
+        tempRooms = tempRooms.filter(room => room.price <= price)
+
+        // change state with filtered rooms
         setData(prevData => ({
             ...prevData,
             sortedRooms: tempRooms
