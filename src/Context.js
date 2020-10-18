@@ -28,7 +28,8 @@ function RoomProvider(props) {
         let featuredRooms = rooms.filter(room => room.featured === true);
         let maxPrice = Math.max(...rooms.map(room => room.price));
         let maxSize = Math.max(...rooms.map(room => room.size));
-        setData({
+        setData(prevData => ({ 
+            ...prevData,
             rooms, 
             featuredRooms, 
             sortedRooms: rooms, 
@@ -36,13 +37,14 @@ function RoomProvider(props) {
             price: maxPrice,
             maxPrice,
             maxSize,
-        });
+        }));
     }, []); 
 
     // get specific room
     const getRoom = (slug) => {
         let tempRooms = [...data.rooms];
         const room = tempRooms.find((room) => room.slug === slug);
+
         return room;
     }
 
@@ -59,17 +61,29 @@ function RoomProvider(props) {
     }
 
     const handleChange = (event) => {
-        const type = event.target.type;
+        const target = event.target;
+        const value = event.type === "checkbox" ? target.checked : target.value;
         const name = event.target.name;
-        const value = event.target.value;
+        setData(prevData => ({
+            ...prevData,
+            [name]: value
+        }))
     }
 
     const filterRooms = () => {
-        console.log("Test")
+        let { rooms, type, capacity, price, minSize, maxSize, breakfast, pets} = data;
+        let tempRooms = [...rooms];
+        if (type !== "all") {
+            tempRooms = tempRooms.filter(room => room.type === type)
+        }
+        setData(prevData => ({
+            ...prevData,
+            sortedRooms: tempRooms
+        }))
     }
 
     return (
-        <RoomContext.Provider value={{data, setData, getRoom, handleChange}}>
+        <RoomContext.Provider value={{data, setData, getRoom, handleChange, filterRooms}}>
             {props.children}
         </RoomContext.Provider>
     )

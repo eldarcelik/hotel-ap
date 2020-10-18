@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Hero from '../components/Hero';
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,12 @@ import ArrowSlideDown from '../components/ArrowSlideDown';
 import FeaturedRooms from '../components/FeaturedRooms';
 
 export default function Home() {
+
+    useEffect(() => {
+        // stay on top of the page when it loads
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <>
         <Hero>

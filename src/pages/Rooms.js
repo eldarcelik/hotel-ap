@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { RoomContext } from '../Context';
 import { Link } from 'react-router-dom';
 import Banner from '../components/Banner';
@@ -12,6 +12,11 @@ export default function Rooms() {
     let { data, setData } = useContext(RoomContext);;
     let { loading, sortedRooms } = data;
     
+    useEffect(() => {
+        // stay on top of the page when it loads
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <>
         <Hero hero="roomsHero">

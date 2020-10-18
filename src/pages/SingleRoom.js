@@ -1,17 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import { RoomContext } from '../Context';
 import StyledHero from '../components/StyledHero';
 import Title from '../components/Title';
 import { Carousel } from 'react-responsive-carousel';
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';    
 
 export default function SingleRoom(props) {
     //the props is being passed by react router
     const [slug, setSlug] = useState(props.match.params.slug);
     const { getRoom } = useContext(RoomContext);
     const room = getRoom(slug);
+    
+    useEffect(() => {
+        // stay on top of the page when it loads
+        window.scrollTo(0, 0);
+    }, [])
 
     if(!room) {
         return ( 
@@ -36,7 +41,7 @@ export default function SingleRoom(props) {
         <section className="single-room" style={{width: "80%", margin: "0 auto"}}>
             <div className="single-room-images">
                 <Title title="Images" />
-                <Carousel autoPlay stopOnHover infiniteLoop useKeyboardArrows>
+                <Carousel >
                     {images.map((image, index) => {
                     return <img key={index} src={image} />
                     })}
