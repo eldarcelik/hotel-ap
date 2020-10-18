@@ -5,9 +5,12 @@ import Loading from './Loading';
 import Room from './Room';
 
 export default function FeaturedRooms() {
-    let { data, setData } = useContext(RoomContext);;
+    let { data } = useContext(RoomContext);;
     let { loading, featuredRooms } = data;
     
+    featuredRooms = featuredRooms.map(room => {
+        return <Room key={room.id} room={room} />}) 
+
     if (loading) {
         return <Loading />;
     }
@@ -15,9 +18,7 @@ export default function FeaturedRooms() {
         <section className="featured-rooms">
             <Title title="featured rooms" />
             <div className="featured-rooms-center">
-                {featuredRooms.map(room => {
-                    return <Room key={room.id} room={room} />}) 
-                }
+                {featuredRooms}
             </div>
         </section>
     )

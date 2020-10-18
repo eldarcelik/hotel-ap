@@ -5,7 +5,7 @@ import { RoomContext } from '../Context';
 import Loading from './Loading';
 
 export default function RoomsContainer() {
-    let { data, setData } = useContext(RoomContext);;
+    let { data } = useContext(RoomContext);;
     let { loading } = data;
     
     if (loading) {

@@ -7,7 +7,6 @@ import ArrowSlideDown from '../components/ArrowSlideDown';
 import FeaturedRooms from '../components/FeaturedRooms';
 
 export default function Home() {
-
     useEffect(() => {
         // stay on top of the page when it loads
         window.scrollTo(0, 0);

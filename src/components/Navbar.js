@@ -23,10 +23,10 @@ export default function Navbar() {
                 </div>
                 <ul className={isOpen ? "nav-links show-nav" : "nav-links"}>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/" onClick={handleToogle}>Home</Link>
                     </li>
                     <li>
-                        <Link to="/rooms">Rooms</Link>
+                        <Link to="/rooms" onClick={handleToogle}>Rooms</Link>
                     </li>
                 </ul>
             </div>

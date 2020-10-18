@@ -21,20 +21,18 @@ export default function RoomsFilter() {
     
     useEffect(() => {
         // set filters to default every time it mounts
-        return () => {
-            setData(prevData => ({
-                ...prevData,
-                type: "all",
-                capacity: 1,
-                price,
-                minPrice,
-                maxPrice,
-                minSize,
-                maxSize,
-                breakfast,
-                pets,
-            }))
-        } 
+        setData(prevData => ({
+            ...prevData,
+            type: "all",
+            capacity: 1,
+            price,
+            minPrice,
+            maxPrice,
+            minSize,
+            maxSize,
+            breakfast,
+            pets,
+        }))
     }, [])
 
     // get unique types
@@ -42,21 +40,18 @@ export default function RoomsFilter() {
     // add default "all"
     types = ["all", ...types];
     // map to jsx
-    types = types.map((item, index) => {
-        return <option key={index} value={item}>{item}</option>
-    })
+    types = types.map((item, index) => <option key={index} value={item}>{item}</option>);
 
     // get unique capacity
     let people = getUnique(rooms, "capacity");
     // map to jsx
-    people = people.map((item, index) => {
-        return <option key={index} value={item}>{item}</option>
-    })
+    people = people.map((item, index) => <option key={index} value={item}>{item}</option>);
 
     return (
         <section className="filter-container">
             <Title title="search rooms" />
             <form className="filter-form">
+                
                 {/* select type */}
                 <div className="form-group">
                     <label htmlFor="type">room type</label>

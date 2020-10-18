@@ -3,7 +3,7 @@ import { FaCocktail, FaBicycle, FaShuttleVan, FaPizzaSlice } from 'react-icons/f
 import Title from './Title';
 
 export default function Services() {
-    const [services, setServices] = useState([
+    const [services] = useState([
         {
             icon: <FaCocktail />,
             title: "free cocktails",
@@ -31,15 +31,13 @@ export default function Services() {
         <section className="services" id="services">
             <Title title="services" />
             <div className="services-center">
-                {services.map((item, index) => {
-                    return (
-                        <article key={index} className="service">
-                            <span>{item.icon}</span>
-                            <h6>{item.title}</h6>   
-                            <p>{item.info}</p> 
-                        </article>
-                    )
-                })}
+                {services.map((item, index) => (
+                    <article key={index} className="service">
+                        <span>{item.icon}</span>
+                        <h6>{item.title}</h6>   
+                        <p>{item.info}</p> 
+                    </article>
+                ))}
             </div>
         </section>
         </>
