@@ -67,14 +67,14 @@ export default function SingleRoom(props) {
                     <h6>{breakfast && "free breakfast included"}</h6>
                 </article>
             </div>
-        </section>
 
-        {/* Extras */}
-        <section className="room-extras">
-            <h6>extras</h6>
-            <ul className="extras">
-                {extras.map((item, index) => <li key={index}>{item}</li>)}
-            </ul>
+            {/* Extras */}
+            <section className="room-extras">
+                <h6>extras</h6>
+                <ul className="extras">
+                    {extras.map((item, index) => <li key={index}>{item}</li>)}
+                </ul>
+            </section>
         </section>
         </>
     )

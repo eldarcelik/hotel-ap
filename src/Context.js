@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import items from './data';
+import Client from './Contentful';
 
 const RoomContext = createContext();
 
@@ -20,25 +20,40 @@ function RoomProvider(props) {
         pets: false,
     });
 
+    // get data
+    const getData = async () => {
+        try {
+            let response = await Client.getEntries({
+                content_type: "hotelAp",
+                order: "fields.price"
+            })
+
+            // format data for easy access
+            let rooms = formatData(response.items);
+            let featuredRooms = rooms.filter(room => room.featured === true);
+        
+            // get max price and size from all rooms
+            let maxPrice = Math.max(...rooms.map(room => room.price));
+            let maxSize = Math.max(...rooms.map(room => room.size));
+        
+            setData(prevData => ({ 
+                ...prevData,
+                rooms, 
+                featuredRooms, 
+                sortedRooms: rooms, 
+                loading: false,
+                price: maxPrice,
+                maxPrice,
+                maxSize,
+            }));
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
-        // format data for easy access
-        let rooms = formatData(items);
-        let featuredRooms = rooms.filter(room => room.featured === true);
-
-        // get max price and size from all rooms
-        let maxPrice = Math.max(...rooms.map(room => room.price));
-        let maxSize = Math.max(...rooms.map(room => room.size));
-
-        setData(prevData => ({ 
-            ...prevData,
-            rooms, 
-            featuredRooms, 
-            sortedRooms: rooms, 
-            loading: false,
-            price: maxPrice,
-            maxPrice,
-            maxSize,
-        }));
+        getData();
     }, []); 
 
     // get specific room

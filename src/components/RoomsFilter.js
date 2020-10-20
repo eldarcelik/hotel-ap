@@ -18,22 +18,6 @@ export default function RoomsFilter() {
         filterRooms()
 
     }, [type, capacity, price, minSize, maxSize, breakfast, pets])
-    
-    useEffect(() => {
-        // set filters to default every time it mounts
-        setData(prevData => ({
-            ...prevData,
-            type: "all",
-            capacity: 1,
-            price,
-            minPrice,
-            maxPrice,
-            minSize,
-            maxSize,
-            breakfast,
-            pets,
-        }))
-    }, [])
 
     // get unique types
     let types = getUnique(rooms, "type");
