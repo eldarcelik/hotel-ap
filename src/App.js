@@ -15,9 +15,9 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/rooms" component={Rooms}/>
-        <Route exact path="/rooms/:slug" component={SingleRoom}/>
+        <Route exact path="/hotel-ap" component={Home}/>
+        <Route exact path="/hotel-ap/rooms" component={Rooms}/>
+        <Route exact path="/hotel-ap/rooms/:slug" component={SingleRoom}/>
         <Route component={Error}/>
       </Switch>
     </Router>

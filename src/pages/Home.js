@@ -17,7 +17,7 @@ export default function Home() {
         <Hero>
             <div className="centerFlex">
                 <Banner title="treat yourself to a dream vacation" subtitle="Deluxe Rooms Starting at $299">
-                    <Link to="/rooms" className="btn-primary">Our rooms</Link>
+                    <Link to="/hotel-ap/rooms" className="btn-primary">Our rooms</Link>
                 </Banner>
                 <ArrowSlideDown />
             </div>

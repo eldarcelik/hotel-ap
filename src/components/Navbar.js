@@ -14,7 +14,7 @@ export default function Navbar() {
         <nav className="navbar">
             <div className="nav-center">
                 <div className="nav-header">
-                    <Link to="/" className="nav-logo">
+                    <Link to="/hotel-ap" className="nav-logo">
                         <SiHotelsDotCom />OTEL<span> AP</span>
                     </Link>
                     <button type="button" className="nav-btn" onClick={handleToogle}>
@@ -23,10 +23,10 @@ export default function Navbar() {
                 </div>
                 <ul className={isOpen ? "nav-links show-nav" : "nav-links"}>
                     <li>
-                        <Link to="/" onClick={handleToogle}>Home</Link>
+                        <Link to="/hotel-ap" onClick={handleToogle}>Home</Link>
                     </li>
                     <li>
-                        <Link to="/rooms" onClick={handleToogle}>Rooms</Link>
+                        <Link to="/hotel-ap/rooms" onClick={handleToogle}>Rooms</Link>
                     </li>
                 </ul>
             </div>

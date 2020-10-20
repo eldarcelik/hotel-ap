@@ -22,7 +22,7 @@ export default function SingleRoom(props) {
         return ( 
             <div className="error">
                 <h3>no such room could be found...</h3>
-                <Link to="/rooms" className="btn-primary">Back to rooms</Link>
+                <Link to="/hotel-ap/rooms" className="btn-primary">Back to rooms</Link>
             </div>
         )
     }
@@ -32,7 +32,7 @@ export default function SingleRoom(props) {
         <>
         <StyledHero img={images[0]}>
             <Banner title={`${name} room`}>
-                <Link to="/rooms" className="btn-primary">
+                <Link to="/hotel-ap/rooms" className="btn-primary">
                     back to rooms
                 </Link>
             </Banner>
