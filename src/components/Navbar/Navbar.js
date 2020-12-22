@@ -29,6 +29,9 @@ export default function Navbar() {
                     <li>
                         <Link to="/hotel-ap/rooms" onClick={handleToogle}>Rooms</Link>
                     </li>
+                    <li>
+                        <a href="#contact" onClick={handleToogle}>Contact</a>
+                    </li>
                 </ul>
             </div>
         </nav>

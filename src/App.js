@@ -5,6 +5,7 @@ import Rooms from './pages/Rooms';
 import SingleRoom from './pages/SignleRoom/SingleRoom';
 import Error from './pages/Error';
 import Navbar from './components/Navbar/Navbar';
+import Footer  from './components/Footer/Footer';
 import { RoomProvider } from './Context';
 import './App.css';
 
@@ -21,6 +22,7 @@ function App() {
         <Route component={Error}/>
       </Switch>
     </Router>
+    <Footer />
     </RoomProvider>
     </>
   );
