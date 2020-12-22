@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import { RoomContext } from '../Context';
-import Title from './Title';
+import { RoomContext } from '../../Context';
+import Title from '../Title/Title';
+import './RoomsFilter.css';
 
 // get all unique values using Set() data structure
 // https://www.youtube.com/watch?v=nmNvGHMtE2k&list=PLnHJACx3NwAdQElswAscNtHAZLAQYgpDA&index=8&ab_channel=CodingAddict
@@ -10,14 +11,14 @@ const getUnique = (items, value) => {
 }
 
 export default function RoomsFilter() {
-    const { data, setData, handleChange, filterRooms } = useContext(RoomContext);
+    const { data, handleChange, filterRooms } = useContext(RoomContext);
     const { rooms, type, capacity, price, minPrice, maxPrice, minSize, maxSize, breakfast, pets } = data;
 
     useEffect(() => {
         // every time when filters change call this function to change parametars in context and filter rooms
         filterRooms()
 
-    }, [type, capacity, price, minSize, maxSize, breakfast, pets])
+    }, [type, capacity, price, minSize, maxSize, breakfast, pets]) // eslint-disable-line react-hooks/exhaustive-deps
 
     // get unique types
     let types = getUnique(rooms, "type");

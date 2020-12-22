@@ -54,7 +54,7 @@ function RoomProvider(props) {
 
     useEffect(() => {
         getData();
-    }, []); 
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     // get specific room
     const getRoom = (slug) => {

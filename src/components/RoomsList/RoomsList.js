@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import Room from './Room';
-import { RoomContext } from '../Context';
+import Room from '../Room/Room';
+import { RoomContext } from '../../Context';
+import './RoomsList.css';
 
 export default function RoomsList() {
     let { data } = useContext(RoomContext);;

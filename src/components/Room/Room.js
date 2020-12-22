@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Room.css';
 
 export default function Room({ room }) {
     const { name, slug, images, price } = room;

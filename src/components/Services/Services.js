@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaCocktail, FaBicycle, FaShuttleVan, FaPizzaSlice } from 'react-icons/fa';
-import Title from './Title';
+import Title from '../Title/Title';
+import './Services.css';
 
 export default function Services() {
     const [services] = useState([

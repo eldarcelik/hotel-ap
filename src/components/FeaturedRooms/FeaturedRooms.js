@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { RoomContext } from '../Context';
-import Title from './Title';
-import Loading from './Loading';
-import Room from './Room';
+import { RoomContext } from '../../Context';
+import Title from '../Title/Title';
+import Loading from '../Loading';
+import Room from '../Room/Room';
+import './FeaturedRooms.css';
 
 export default function FeaturedRooms() {
     let { data } = useContext(RoomContext);;

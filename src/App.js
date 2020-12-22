@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Rooms from './pages/Rooms';
-import SingleRoom from './pages/SingleRoom';
+import SingleRoom from './pages/SignleRoom/SingleRoom';
 import Error from './pages/Error';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import { RoomProvider } from './Context';
 import './App.css';
 

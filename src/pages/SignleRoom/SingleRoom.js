@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Banner from '../components/Banner';
+import Banner from '../../components/Banner/Banner';
 import { Link } from 'react-router-dom';
-import { RoomContext } from '../Context';
-import StyledHero from '../components/StyledHero';
-import Title from '../components/Title';
+import { RoomContext } from '../../Context';
+import StyledHero from '../../components/StyledHero';
+import Title from '../../components/Title/Title';
 import { Carousel } from 'react-responsive-carousel';
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';    
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';  
+import './SingleRoom.css';  
 
 export default function SingleRoom(props) {
     //the props is being passed by react router
     const [slug] = useState(props.match.params.slug);
     const { getRoom } = useContext(RoomContext);
     const room = getRoom(slug);
+    console.log(props)
     
     useEffect(() => {
         // stay on top of the page when it loads
