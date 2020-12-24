@@ -9,6 +9,8 @@ Introduction
 
 The app have functionalities of displaying and filtering hotel rooms by type, price, capacity, etc. and a detail view for each individual room.
 
+<img src="src/images/Home-page.png" width="250" /><img src="src/images/Rooms-page.png" width="250" /><img src="src/images/Room-page.png" width="250" />
+
 ### Getting Started
 
 1. Download/clone repository
