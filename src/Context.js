@@ -1,38 +1,25 @@
 import React, { createContext, useEffect, useState } from 'react';
-import Client from './Contentful';
+import { Client, initialState, API_INFO } from './contants';
+import formatData from './formatData';
 
 const RoomContext = createContext();
+const RoomConsumer = RoomContext.Consumer;
 
-function RoomProvider(props) {
-    const [data, setData] = useState({
-        rooms: [],
-        sortedRooms: [],
-        featuredRooms: [],
-        loading: true,
-        type: "all",
-        capacity: 1,
-        price: 0,
-        minPrice: 0,
-        maxPrice: 0,
-        minSize: 0,
-        maxSize: 0,
-        breakfast: false,
-        pets: false,
-    });
+function RoomProvider({ children }) {
+    const [data, setData] = useState(initialState);
+    
+    useEffect(() => {
+        getData();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    // get data
     const getData = async () => {
         try {
-            let response = await Client.getEntries({
-                content_type: "hotelAp",
-                order: "fields.price"
-            })
+            let response = await Client.getEntries(API_INFO);
 
             // format data for easy access
             let rooms = formatData(response.items);
             let featuredRooms = rooms.filter(room => room.featured === true);
         
-            // get max price and size from all rooms
             let maxPrice = Math.max(...rooms.map(room => room.price));
             let maxSize = Math.max(...rooms.map(room => room.size));
         
@@ -48,34 +35,10 @@ function RoomProvider(props) {
             }));
 
         } catch (error) {
-            console.log(error);
+            // TODO: Handle error
         }
     }
-
-    useEffect(() => {
-        getData();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-    // get specific room
-    const getRoom = (slug) => {
-        let tempRooms = [...data.rooms];
-        const room = tempRooms.find((room) => room.slug === slug);
-
-        return room;
-    }
-
-    // format and save all information about one room in one object
-    const formatData = (items) => {
-        let tempItems = items.map(item => {
-            let id = item.sys.id;
-            let images = item.fields.images.map(image => image.fields.file.url);
-            let room = {...item.fields, images, id};
-
-            return room;
-        });
-        return tempItems;
-    }
-
+    
     const handleChange = (event) => {
         const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
         const name = event.target.name;
@@ -85,11 +48,20 @@ function RoomProvider(props) {
             [name]: value
         }))
     }
+    
+    const getRoom = (slug) => {
+        let tempRooms = [...data.rooms];
+        const room = tempRooms.find((room) => room.slug === slug);
+
+        return room;
+    }
 
     const filterRooms = () => {
         let { rooms, type, capacity, price, minSize, maxSize, breakfast, pets} = data;
+        
         // all the rooms
         let tempRooms = [...rooms];
+        
         // transform value
         capacity = parseInt(capacity);
         price = parseInt(price);
@@ -121,11 +93,9 @@ function RoomProvider(props) {
 
     return (
         <RoomContext.Provider value={{data, setData, getRoom, handleChange, filterRooms}}>
-            {props.children}
+            {children}
         </RoomContext.Provider>
     )
 }
-
-const RoomConsumer = RoomContext.Consumer;
 
 export { RoomContext, RoomProvider, RoomConsumer };
