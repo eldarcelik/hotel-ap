@@ -11,13 +11,6 @@ The app have functionalities of displaying and filtering hotel rooms by type, pr
 
 <img src="src/images/Home-page.png" width="250" /><img src="src/images/Rooms-page.png" width="250" /><img src="src/images/Room-page.png" width="250" />
 
-### Getting Started
-
-1. Download/clone repository
-2. Run in terminal to install dependencies: npm install
-3. Run in terminal to start server locally: npm start
-4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser
-
 ### Technical Requirements
 * React.js
     * React Router - Using client-side routing to create a single page application

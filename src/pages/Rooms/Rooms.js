@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Banner from '../components/Banner/Banner';
-import Hero from '../components/Hero/Hero';
-import RoomsContainer from '../components/RoomsContainer';
+import Banner from '../../components/Banner/Banner';
+import Hero from '../../components/Hero/Hero';
+import RoomsContainer from '../../components/RoomContainer/RoomsContainer';
 
 export default function Rooms() {    
     useEffect(() => {

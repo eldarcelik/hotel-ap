@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { RoomContext } from '../../Context';
 import Title from '../Title/Title';
-import Loading from '../Loading';
+import Loading from '../Loading/Loading';
 import Room from '../Room/Room';
 import './FeaturedRooms.css';
 

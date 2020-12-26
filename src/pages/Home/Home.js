@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import Hero from '../components/Hero/Hero';
-import Banner from '../components/Banner/Banner';
+import Hero from '../../components/Hero/Hero';
+import Banner from '../../components/Banner/Banner';
 import { Link } from 'react-router-dom';
-import Services from '../components/Services/Services';
-import ArrowSlideDown from '../components/ArrowSlideDown';
-import FeaturedRooms from '../components/FeaturedRooms/FeaturedRooms';
+import Services from '../../components/Services/Services';
+import ArrowSlideDown from '../../components/ArrowSlideDown/ArrowSlideDown';
+import FeaturedRooms from '../../components/FeaturedRooms/FeaturedRooms';
 
 export default function Home() {
     useEffect(() => {

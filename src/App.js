@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home';
-import Rooms from './pages/Rooms';
+import Home from './pages/Home/Home';
+import Rooms from './pages/Rooms/Rooms';
 import SingleRoom from './pages/SignleRoom/SingleRoom';
-import Error from './pages/Error';
+import Error from './pages/Error/Error';
 import Navbar from './components/Navbar/Navbar';
 import Footer  from './components/Footer/Footer';
 import { RoomProvider } from './Context';
