@@ -1,13 +1,10 @@
 import React, { useContext } from 'react';
-import { RoomContext } from '../../Context';
+import { RoomContext } from '../../Context'
 import { SiHotelsDotCom } from 'react-icons/si';
 import GoogleMapReact from 'google-map-react';
+import { getUnique } from '../../functions';
+import { MAP_API_INFO } from '../../contants';
 import './Footer.css';
-
-const getUnique = (items, value) => {
-    let tempArray = items.map(item => item[value])
-    return [...new Set(tempArray)]
-}
 
 const LogoComponent = () => <div className="logo-component-map"><SiHotelsDotCom /></div>;
 
@@ -17,10 +14,11 @@ export default function Footer() {
 
     // get unique types
     let types = getUnique(rooms, "type");
-    // add default "all"
     types = [...types];
     // map to jsx
-    types = types.map(item => item.charAt(0).toUpperCase() + item.slice(1)).map((item, index) => <p key={index}>{item} rooms</p>);
+    types = types
+        .map(item => item.charAt(0).toUpperCase() + item.slice(1))
+        .map((item, index) => <p key={index}>{item} rooms</p>);
 
     return (
         <>
@@ -53,14 +51,14 @@ export default function Footer() {
                 <div className="location">
                     <div className="location-map">
                         <GoogleMapReact
-                            bootstrapURLKeys={{ key: 'AIzaSyCfqMSyB-mYKfPhKXGPqy5IY0-daeU9gYg' }}
-                            defaultCenter={{lat: 43.85904900714958, lng: 18.416060968509566}}
+                            bootstrapURLKeys={{ key: MAP_API_INFO.GOOGLE_MAP_API_KEY }}
+                            defaultCenter={ MAP_API_INFO.LOCATION }
                             defaultZoom={11}
                         >
                             <LogoComponent
-                                lat={43.85904900714958}
-                                lng={18.416060968509566}
-                                text="Hotel AP"
+                                lat={MAP_API_INFO.LOCATION.lat}
+                                lng={MAP_API_INFO.LOCATION.lng}
+                                text={MAP_API_INFO.TEXT}
                             />
                         </GoogleMapReact>
                     </div>

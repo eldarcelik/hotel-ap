@@ -6,7 +6,7 @@ import Room from '../Room/Room';
 import './FeaturedRooms.css';
 
 export default function FeaturedRooms() {
-    let { data } = useContext(RoomContext);;
+    let { data } = useContext(RoomContext);
     let { loading, featuredRooms } = data;
     
     featuredRooms = featuredRooms.map(room => {
@@ -15,6 +15,7 @@ export default function FeaturedRooms() {
     if (loading) {
         return <Loading />;
     }
+    
     return (
         <section className="featured-rooms">
             <Title title="featured rooms" />

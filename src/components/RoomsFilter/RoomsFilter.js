@@ -1,14 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { RoomContext } from '../../Context';
+import { getUnique } from '../../functions';
 import Title from '../Title/Title';
 import './RoomsFilter.css';
-
-// get all unique values using Set() data structure
-// https://www.youtube.com/watch?v=nmNvGHMtE2k&list=PLnHJACx3NwAdQElswAscNtHAZLAQYgpDA&index=8&ab_channel=CodingAddict
-const getUnique = (items, value) => {
-    let tempArray = items.map(item => item[value])
-    return [...new Set(tempArray)]
-}
 
 export default function RoomsFilter() {
     const { data, handleChange, filterRooms } = useContext(RoomContext);

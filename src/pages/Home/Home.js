@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 import Banner from '../../components/Banner/Banner';
-import { Link } from 'react-router-dom';
 import Services from '../../components/Services/Services';
 import ArrowSlideDown from '../../components/ArrowSlideDown/ArrowSlideDown';
 import FeaturedRooms from '../../components/FeaturedRooms/FeaturedRooms';

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledHero = styled.header`
+const StyledHeroSection = styled.header`
     min-height: 60vh;
     background: url(${props => props.img}) center/cover no-repeat;
     display: flex;
@@ -8,4 +8,4 @@ const StyledHero = styled.header`
     justify-content: center;
 `;
 
-export default StyledHero;
+export default StyledHeroSection;

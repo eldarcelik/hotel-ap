@@ -1,9 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { Client, initialState, API_INFO } from './contants';
-import formatData from './formatData';
+import { createClient } from 'contentful';
+import { initialState, API_CONTENTFUL_INFO, API_CONTENTFUL_TYPE_INFO } from './contants';
+import { formatData } from './functions';
 
 const RoomContext = createContext();
 const RoomConsumer = RoomContext.Consumer;
+const Client = createClient(API_CONTENTFUL_INFO);
 
 function RoomProvider({ children }) {
     const [data, setData] = useState(initialState);
@@ -14,9 +16,9 @@ function RoomProvider({ children }) {
 
     const getData = async () => {
         try {
-            let response = await Client.getEntries(API_INFO);
+            let response = await Client.getEntries(API_CONTENTFUL_TYPE_INFO);
 
-            // format data for easy access
+            // Format data for easy access
             let rooms = formatData(response.items);
             let featuredRooms = rooms.filter(room => room.featured === true);
         
@@ -59,32 +61,32 @@ function RoomProvider({ children }) {
     const filterRooms = () => {
         let { rooms, type, capacity, price, minSize, maxSize, breakfast, pets} = data;
         
-        // all the rooms
+        // All the rooms
         let tempRooms = [...rooms];
         
-        // transform value
+        // Transform value
         capacity = parseInt(capacity);
         price = parseInt(price);
 
-        // filter by type 
+        // Filter by type 
         type !== "all" && (tempRooms = tempRooms.filter(room => room.type === type));
         
-        // filter by capacity
+        // Filter by capacity
         capacity !== 1 && (tempRooms = tempRooms.filter(room => room.capacity >= capacity));
 
-        // filter by price 
+        // Filter by price 
         tempRooms = tempRooms.filter(room => room.price <= price)
 
-        // filter by size
+        // Filter by size
         tempRooms = tempRooms.filter(room => room.size >= minSize && room.size <= maxSize)
     
-        // filter by breakfast 
+        // Filter by breakfast 
         breakfast && (tempRooms = tempRooms.filter(room => room.breakfast === true));
 
-        // filter by pets
+        // Filter by pets
         pets && (tempRooms = tempRooms.filter(room => room.pets === true));
 
-        // change state with filtered rooms
+        // Change state with filtered rooms
         setData(prevData => ({
             ...prevData,
             sortedRooms: tempRooms
